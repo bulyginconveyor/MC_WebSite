@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: Raleway;
+  src: url("assets/fonts/raleway/Raleway-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url("assets/fonts/montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+@theme {
+  --font-raleway: "Raleway", "sans-serif";
+  --font-montserrat: "Montserrat", "sans-serif";
+}
+
+
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+h1 {
+  @apply text-center;
+  @apply font-raleway font-medium text-black text-5xl;
+}
+
+h2 {
+  @apply font-raleway font-medium text-[32px];
+}
+
+p {
+  @apply font-montserrat font-normal text-black text-base;
+}

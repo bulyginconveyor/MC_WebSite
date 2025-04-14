@@ -1,0 +1,5 @@
+@reference "../../index.css";
+
+p.light {
+  @apply font-light text-sm;
+}
