@@ -1,0 +1,7 @@
+@reference "../../index.css";
+
+div.container {
+    @apply xl:max-w-[1200px] max-w-[1280px];
+    @apply xl:px-0 px-10;
+    @apply ml-auto mr-auto;
+}

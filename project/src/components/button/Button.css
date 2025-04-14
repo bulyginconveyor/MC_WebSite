@@ -1,0 +1,41 @@
+@reference "../../index.css";
+
+.classic {
+    @apply relative;
+
+    @apply min-w-[40px]  px-[30px];
+    @apply rounded-[10px] border border-black;
+    @apply font-normal text-center font-raleway text-nowrap;
+    @apply bg-white;
+}
+
+.classic > div {
+    @apply transition-colors duration-200;
+
+    @apply absolute -z-10;
+
+    @apply min-w-[40px] px-[30px];
+    @apply rounded-[10px] border border-black;
+    @apply text-white text-nowrap;
+}
+
+.classic_h {
+    @apply py-1.5 text-2xl mr-1 mb-1 max-h-[42px];
+}
+button.classic_h > div {
+    @apply -mt-[36px] -ml-[28px] max-h-[42px];
+}
+
+.thin_h {
+    @apply py-[2px] text-xl mr-1 mb-1 max-h-[34px];
+}
+button.thin_h > div {
+    @apply -mt-[28px] -ml-[28px] max-h-[34px];
+}
+
+.full-thin_h {
+    @apply py-[2px] text-base mr-0.5 mb-0.5 max-h-[30px];
+}
+button.full-thin_h > div {
+    @apply -mt-[24px] -ml-[28px] max-h-[30px];
+}
