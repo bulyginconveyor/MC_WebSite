@@ -2,13 +2,6 @@ import { children, JSXElement, Match, mergeProps, Switch } from "solid-js"
 
 import './Button.css';
 
-enum TypeButton {
-    classic,
-    thin,
-    verythin,
-    custom
-}
-
 export enum TypeThin {
     classic,
     thin,
@@ -18,61 +11,90 @@ export enum TypeThin {
 type ButtonProps = {
     children: JSXElement,
     "class"?: string,
-    "type"?: TypeButton,
     thin?: TypeThin
+    dark?: boolean
 }
 
 export default function Button(props: ButtonProps){
-    const finalProps = mergeProps({"type": TypeButton.classic, thin: TypeThin.classic}, props);
+    const finalProps = mergeProps({thin: TypeThin.classic, dark: false}, props);
 
     return (
         <Switch fallback={<div>А тут должна быть кнопка👀</div>}>
-            <Match when={finalProps.type === TypeButton.custom}>
-                <CustomButton {...finalProps}/>
+            <Match when={finalProps.dark === false}>
+                <LightButton {...finalProps}/>
             </Match>
-            <Match when={finalProps.type === TypeButton.classic}>
-                <ClassicButton {...finalProps}/>
+            <Match when={finalProps.dark === true}>
+                <DarkButton {...finalProps}/>
             </Match>
         </Switch>
     )
 }
 
-function CustomButton(props: ButtonProps){
-    const c = children(() => props.children);
-    const thin = () => thinClass(props.thin!);
-
-    return (
-        <button class={props.class + " " + thin()}>
-            {c()}
-        </button>
-    )
-}
-
-function ClassicButton(props: ButtonProps){
+function LightButton(props: ButtonProps){
     const c = children(() => props.children);
     const thin = () => thinClass(props.thin!);
     
     return (
-        <button class={"group classic " + thin() + props.class}>
-            {c()}
-            <div class={"group-hover:bg-black group-focus:border-2 " + thin() + props.class}>
-            {c()}
+        <button class={"group " + thin().body + props.class}>
+            <div class={"bg-white light_btn " + thin().content + props.class}>
+                {c()}
+            </div>
+            <div class={"group-hover:bg-black group-focus:border-2 light_btn " + thin().shadow + props.class}>
+                {c()}
             </div>
         </button>
     )
 }
 
-function thinClass(thin: TypeThin): string{
-    var thinResult: string = "";
+function DarkButton(props: ButtonProps){
+    const c = children(() => props.children);
+    const thin = () => thinClass(props.thin!);
+    
+    return (
+        <button class={"group " + thin().body + props.class}>
+            <div class={"bg-black dark_btn " + thin().content + props.class}>
+                {c()}
+            </div>
+            <div class={"group-hover:bg-white group-focus:border-2 dark_btn " + thin().shadow + props.class}>
+                {c()}
+            </div>
+        </button>
+    )
+}
+
+type ThinResult = {
+    body: string;
+    content: string;
+    shadow: string;
+};
+
+function thinClass(thin: TypeThin): ThinResult {
+    
+    var thinResult: ThinResult;
+    
     switch(thin){
         case TypeThin.classic:
-            thinResult = "classic_h ";
+            thinResult = {
+                body: "classic_body ",
+                content: "classic_content ",
+                shadow: "classic_shadow ",
+            };
             break;
+
         case TypeThin.thin:
-            thinResult = "thin_h ";
+            thinResult = {
+                body: "thin_body ",
+                content: "thin_content ",
+                shadow: "thin_shadow ",
+            };
             break;
+
         case TypeThin.full_thin:
-            thinResult = "full-thin_h ";
+            thinResult = {
+                body: "fullthin_body ",
+                content: "fullthin_content ",
+                shadow: "fullthin_shadow ",
+            };
             break;
     }
 

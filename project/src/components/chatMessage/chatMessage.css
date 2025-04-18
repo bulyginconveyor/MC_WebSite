@@ -1,0 +1,21 @@
+@reference "../../index.css";
+
+.left_message {
+    @apply self-start;
+    
+    @apply p-[10px] pb-[7px];
+    @apply border-black border border-l-0 rounded-r-[10px];
+    
+    @apply font-montserrat font-normal text-base;
+    @apply text-wrap text-left max-w-[49%];
+}
+
+.right_message {
+    @apply self-end;
+    
+    @apply p-[10px] pb-[7px];
+    @apply border-black border border-r-0 rounded-l-[10px];
+    
+    @apply font-montserrat font-normal text-base;
+    @apply text-wrap text-left max-w-[50%];
+}

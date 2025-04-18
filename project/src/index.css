@@ -21,6 +21,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply text-black;
 }
 
 
@@ -33,6 +34,10 @@ h2 {
   @apply font-raleway font-medium text-[32px];
 }
 
+h3 {
+  @apply font-raleway font-normal text-[32px];
+}
+
 p {
-  @apply font-montserrat font-normal text-black text-base;
+  @apply font-montserrat font-normal text-base;
 }
